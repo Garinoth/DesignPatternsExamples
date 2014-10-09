@@ -12,13 +12,11 @@ public class EstadoPreparado extends EstadoConexion {
 
     @Override
     public void cerrar(Conexion conexion) {
-        conexion.setCodigoEstado(Estado.CERRADO);
         conexion.setEstado(new EstadoCerrado());
     }
 
     @Override
     public void parar(Conexion conexion) {
-        conexion.setCodigoEstado(Estado.PARADO);
         conexion.setEstado(new EstadoParado());
     }
 
@@ -30,13 +28,17 @@ public class EstadoPreparado extends EstadoConexion {
     @Override
     public void enviar(Conexion conexion, String msg) {
         conexion.getLink().enviar(msg);
-        conexion.setCodigoEstado(Estado.ESPERANDO);
         conexion.setEstado(new EstadoEsperando());
     }
 
     @Override
     public void recibir(Conexion conexion, int respuesta) {
         throw new UnsupportedOperationException("Acción no permitida... ");
+    }
+
+    @Override
+    public Estado getEstado() {
+        return Estado.PREPARADO;
     }
 
 }

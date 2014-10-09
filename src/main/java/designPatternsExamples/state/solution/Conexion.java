@@ -3,22 +3,16 @@ package designPatternsExamples.state.solution;
 public class Conexion {
     
     private EstadoConexion estado;
-    private Estado codigoEstado;
     private Link link;
 
     public Conexion(Link link) {
         assert link != null;
         this.link = link;
         this.estado = new EstadoCerrado();
-        this.codigoEstado = Estado.CERRADO;
     }
 
     protected void setEstado(EstadoConexion estado) {
         this.estado = estado;
-    }
-
-    protected void setCodigoEstado(Estado codigoEstado) {
-        this.codigoEstado = codigoEstado;  
     }
     
     public Link getLink() {
@@ -26,7 +20,7 @@ public class Conexion {
     }
 
     public Estado getEstado() {
-        return this.codigoEstado;
+        return this.estado.getEstado();
     }
 
     public void abrir() {

@@ -8,7 +8,6 @@ public class EstadoCerrado extends EstadoConexion {
 
     @Override
     public void abrir(Conexion conexion) {
-        conexion.setCodigoEstado(Estado.PREPARADO);
         conexion.setEstado(new EstadoPreparado());
     }
 
@@ -35,6 +34,11 @@ public class EstadoCerrado extends EstadoConexion {
     @Override
     public void recibir(Conexion conexion, int respuesta) {
         throw new UnsupportedOperationException("Acción no permitida... ");
+    }
+
+    @Override
+    public Estado getEstado() {
+        return Estado.CERRADO;
     }
 
 }

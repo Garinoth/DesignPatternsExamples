@@ -35,13 +35,16 @@ public class EstadoEsperando extends EstadoConexion {
     public void recibir(Conexion conexion, int respuesta) {
         conexion.getLink().recibir(respuesta);
         if (respuesta == 0) {
-            conexion.setCodigoEstado(Estado.PREPARADO);
             conexion.setEstado(new EstadoPreparado());
         } else if (respuesta > 0) {
-            conexion.setCodigoEstado(Estado.CERRADO);
             conexion.setEstado(new EstadoCerrado());
         }
         assert false: "Código de respuesta no válido";
+    }
+
+    @Override
+    public Estado getEstado() {
+        return Estado.ESPERANDO;
     }
 
 }
