@@ -2,7 +2,9 @@ package designPatternsExamples.visitor.solution;
 
 public class Visitor2 extends Visitor {
     
-    private int[] elementos = new int[2];
+    private static final int TIPOS_ELEMENTOS = 2;
+    
+    private int[] elementos = new int[TIPOS_ELEMENTOS];
 
     @Override
     public void visitElementA(ElementA e) {
